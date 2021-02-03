@@ -17,12 +17,24 @@ app.all("*", function (req, res, next) {
 	next();
 });
 
-//开放静态资源
-// app.use(express.static(path.join(__dirname, "public")));
+// 处理post参数;
+app.use(
+	formidableMiddleware({
+		//文件上传目录
+		uploadDir: path.join(__dirname, "public", "uploads"),
+		//z最大上传文件为2M
+		maxFileSize: 2 * 1024 * 1024,
+		//保留文件扩展名
+		keepExtensions: true,
+	})
+);
+
+// 开放静态资源
+app.use(express.static(path.join(__dirname, "public")));
 
 //引入路由模块;
 require("./routes/app.js")(app);
-app.get("/", (req, res) => res.send("Hello World! database connected?"));
+app.get("/", (req, res) => res.send("Weclome to backend"));
 
 app.listen(port, () => {
 	console.log("running.....");

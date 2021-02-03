@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 // 信息验证模块
-const joi = require("joi");
-const { number } = require("joi");
+const Joi = require("joi");
 
 //创建商品集合规则
 const goodsSchema = new mongoose.Schema(
@@ -15,9 +14,8 @@ const goodsSchema = new mongoose.Schema(
 		},
 		//发布商品的用户id
 		uid: {
-			// type: mongoose.Schema.Types.ObjectId,
-			// ref:"User",
-			type: String,
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
 			required: true,
 		},
 		originPrice: {
@@ -50,7 +48,7 @@ const goodsSchema = new mongoose.Schema(
 		},
 		desc: {
 			type: String,
-			maxlength: 100,
+			maxlength: 200,
 		},
 		modifyTime: {
 			type: Number,
@@ -60,11 +58,36 @@ const goodsSchema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
+		sale: {
+			type: Number,
+			default: 0,
+		},
 	},
-	{ versionKey: false }
+	{ versionKey: false, timestamps: true }
 );
 
 const Goods = mongoose.model("Goods", goodsSchema);
+// 商品信息校验
+
+// Goods.create(
+// 	{
+// 		name: "AirPodsPro",
+// 		uid: "600ae6d084697d099432a76f",
+// 		originPrice: "1999",
+// 		price: "999",
+// 		new: 7,
+// 		count: 2,
+// 		category: "6010df758ad60f11f4cd7254",
+// 		desc: "开创真无线降噪耳机的划时代产品",
+// 	},
+// 	function (err, res) {
+// 		if (err) console.log(err);
+// 		console.log(res);
+// 	}
+// );
+// Goods.find()
+// 	.populate("uid")
+// 	.then((res) => console.log(res));
 
 module.exports = {
 	Goods,
