@@ -12,7 +12,9 @@ module.exports = async (req, res) => {
 		});
 	}
 	// 查找二级分类是否存在;
-	let subcate = await Category.findOne({ subCate: { $elemMatch: { subName: data.subCate[0].subName } } });
+	let subcate = await Category.findOne({
+		$and: [{ name: data.name }, { subCate: { $elemMatch: { subName: data.subCate[0].subName } } }],
+	});
 	if (subcate) {
 		return res.send({ message: "该二级分类已存在", status: 401 });
 	}
@@ -45,3 +47,4 @@ module.exports = async (req, res) => {
 	// 	res.send({ message: "添加成功", status: 200 });
 	// });
 };
+

@@ -5,9 +5,10 @@ const orderSchema = mongoose.Schema(
 		uid: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
+			require:true
 		},
 		orderTime: {
-			type: Date,
+			type: Number,
 			default: Date.now,
 		},
 		payType: {
@@ -19,9 +20,11 @@ const orderSchema = mongoose.Schema(
 			// 0未付款  1 已付款
 			type: Number,
 			enum: [0, 1],
+			default:0
 		},
 		address: {
 			type: String,
+			require:true
 		},
 		totalPrice: {
 			type: Number,
@@ -30,6 +33,7 @@ const orderSchema = mongoose.Schema(
 		state: {
 			type: Number,
 			enum: [0, 1, 2],
+			require:true
 		},
 	},
 	{

@@ -15,7 +15,6 @@ const userSchema = mongoose.Schema(
 		email: {
 			type: String,
 			required: true,
-			// unique: true,
 		},
 		password: {
 			type: String,
@@ -30,15 +29,46 @@ const userSchema = mongoose.Schema(
 			type: String,
 			default: "normal",
 			enum: ["normal", "admin"],
+			require: true,
 		},
 		avatar: {
 			type: String,
-			default: "/upload/default-avtar.jpg",
+			default: "/uploads/default-avatar.jpg",
+		},
+		realName: {
+			type: String,
+		},
+		signature: {
+			type: String,
 		},
 		createdTime: {
 			type: Date,
 			default: Date.now,
 		},
+		cart: [
+			{
+				good: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "Goods",
+				},
+				count: {
+					type: Number,
+					default: 1,
+				},
+			},
+		],
+		myWanteds: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Wanteds",
+			},
+		],
+		myGoods: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Goods",
+			},
+		],
 	},
 	{ versonKey: "false" }
 );

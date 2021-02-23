@@ -62,6 +62,42 @@ const goodsSchema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
+		comment: [
+			{
+				user: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "User",
+					required: true,
+				},
+				content: {
+					type: String,
+					maxlength: 200,
+					required: true,
+				},
+				createdAt: {
+					type: Number,
+					default: Date.now,
+				},
+				rate: {
+					type: Number,
+					enum: [1, 2, 3, 4, 5],
+				},
+			},
+		],
+		/*发布商品的状态
+   0---未过审
+   1---审核中
+   2---已过审
+  */
+		state: {
+			type: Number,
+			enum: [0, 1, 2],
+			default: 1,
+		},
+		display: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	{ versionKey: false, timestamps: true }
 );

@@ -14,14 +14,10 @@ const categorySchema = new mongoose.Schema(
 			{
 				subName: {
 					type: String,
-					unique: true,
 				},
 				pic: {
 					type: String,
 				},
-				// subCateid: {
-				// 	type: mongoose.Schema.Types.ObjectId,
-				// },
 			},
 		],
 	},

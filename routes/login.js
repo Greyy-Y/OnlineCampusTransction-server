@@ -6,11 +6,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
 	let data = req.fields;
-	console.log(req.fields);
 	let user = await User.findOne({
 		email: data.email,
 	});
-	console.log(user);
 	// 如果用户不存在
 	if (!user) {
 		res.send({ message: "邮箱不存在", status: 400 });
@@ -32,6 +30,9 @@ module.exports = async (req, res) => {
 			email: user.email,
 			nickName: user.nickName,
 			role: user.role,
+			avatar: user.avatar,
+			realName: user.realName,
+			sex: user.sex,
 		},
 		msg: "登录成功",
 		status: 200,

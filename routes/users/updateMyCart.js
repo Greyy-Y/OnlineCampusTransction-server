@@ -1,7 +1,7 @@
-const { User } = require("../model/user");
+const { User } = require("../../model/user");
 module.exports = async (req, res) => {
 	let data = req.fields;
-	let cart = await User.updateOne(
+	let cart = await User.findOneAndUpdate(
 		{
 			_id: data.uid,
 			cart: {
@@ -17,6 +17,6 @@ module.exports = async (req, res) => {
 	res.json({
 		status: 200,
 		msg: "修改购物车商品数量成功",
-		cart,
+		cart: cart.cart,
 	});
 };
