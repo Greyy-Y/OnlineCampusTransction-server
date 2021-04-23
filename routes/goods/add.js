@@ -1,7 +1,6 @@
 const { Goods } = require("../../model/goods");
 
 module.exports = async (req, res) => {
-	// 数据校验
 	// 创建商品
 	let data = req.fields;
 	let goods = new Goods(data);

@@ -13,4 +13,15 @@ goods.post("/addViewed", require("./goods/addViewed"));
 goods.post("/comment", require("./goods/comment"));
 //获取商品评论
 goods.post("/getComment", require("./goods/getComment"));
+// 按类别查询商品
+goods.post("/findByCate", require("./goods/findByCate"));
+// 更新发布的商品
+goods.post("/editMyGood", require("./goods/editMyGood"));
+// 模糊查询商品
+goods.post("/getGoodsByName", require("./goods/getGoodsByName"));
+
+goods.post("/removeById", require("./goods/removeById"));
+
+goods.post("/changeDisplay", require("./goods/changeDisplay"));
+goods.post("/changeState", require("./goods/changeState"));
 module.exports = goods;

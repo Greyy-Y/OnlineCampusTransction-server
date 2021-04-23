@@ -6,4 +6,6 @@ recommend.get("/getFeatured", require("./recommend/getFeatured"));
 // 添加 推荐
 recommend.post("/add", require("./recommend/add"));
 
+recommend.post("/removeById", require("./recommend/removeById"));
+
 module.exports = recommend;

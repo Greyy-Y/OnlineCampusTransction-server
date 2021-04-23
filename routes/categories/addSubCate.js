@@ -3,7 +3,7 @@ const Joi = require("joi");
 // 添加 分类）
 module.exports = async (req, res) => {
 	let data = req.fields;
-	// console.log(data);
+	console.log(data);
 	let firCate = await Category.findOne({ name: data.name });
 	if (!firCate) {
 		return res.send({
@@ -47,4 +47,3 @@ module.exports = async (req, res) => {
 	// 	res.send({ message: "添加成功", status: 200 });
 	// });
 };
-

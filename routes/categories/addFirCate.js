@@ -3,6 +3,7 @@ const { Category } = require("../../model/category");
 module.exports = async (req, res) => {
 	let data = req.fields;
 	// 查找一级分类是否存在;
+	console.log(data);
 	let firCate = await Category.findOne({
 		name: data.name,
 	});

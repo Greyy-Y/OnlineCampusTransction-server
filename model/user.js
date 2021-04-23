@@ -45,6 +45,22 @@ const userSchema = mongoose.Schema(
 			type: Date,
 			default: Date.now,
 		},
+		address: [
+			{
+				receiver: {
+					type: String,
+					required: true,
+				},
+				detailAdd: {
+					type: String,
+					required: true,
+				},
+				phone: {
+					type: String,
+					required: true,
+				},
+			},
+		],
 		cart: [
 			{
 				good: {

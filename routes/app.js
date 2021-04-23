@@ -23,8 +23,14 @@ module.exports = (app) => {
 	app.use("/users", require("./users"));
 	// 获取首页推荐
 	app.use("/recommend", require("./recommend"));
+	// 订单处理
+	app.use("/orders", require("./orders"));
 	// 图片文件上传
 	app.post("/upload", require("./upload"));
+
+	app.use("/admins", require("./admins"));
+
+	app.use("/notice", require("./notice"));
 
 	app.use("/test", require("./test"));
 };

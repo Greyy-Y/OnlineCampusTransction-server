@@ -1,7 +1,6 @@
 const { Goods } = require("../../model/goods");
-// test ok
 module.exports = async (req, res) => {
-	let data = await Goods.find();
+	let data = await Goods.find().populate("category");
 	res.json({
 		status: 200,
 		msg: "ok",

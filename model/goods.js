@@ -8,7 +8,7 @@ const goodsSchema = new mongoose.Schema(
 	{
 		name: {
 			type: String,
-			minlength: 2,
+			minlength: 1,
 			maxlength: 40,
 			required: true,
 		},
